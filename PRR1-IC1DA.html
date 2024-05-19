@@ -62,21 +62,50 @@
         const quizData = [
             {
                 type: 'multiple-choice',
-                question: 'Ano pangalan ng Aso ko?',
-                options: ['Kobe', 'Jaguar', 'Yoshi', 'Sky'],
-                answers: ['Kobe']
-            },
-            {
-                type: 'identification',
-                question: 'True or False: May pusa kami sa bahay',
+                question: 'True of False: Research is defined as Scientific Interpretation',
+                options: ['True', 'False'],
                 answers: ['False']
             },
             {
                 type: 'enumeration',
-                question: 'Mic Test',
-                answers: ['1', '2', '3']
+                question: 'Purpose of Research',
+                answers: ['TO INFORM ACTION', 'TO PROVE THEORIES', 'TO HAVE A KNOWLEDGE IN A FIELD OF STUDY']
             },
-
+            {
+                type: 'identification',
+                question: 'Research is based on direct experience or observation by the researcher.',
+                answers: ['EMPERICAL']
+            },
+            {
+                type: 'identification',
+                question: 'Research is based on valid procedures and principles.',
+                answers: ['LOGICAL']
+            },
+            {
+                type: 'identification',
+                question: 'Research is a cyclical process because it starts with a problem and ends with a problem',
+                answers: ['CYCLICAL']
+            },
+            {
+                type: 'identification',
+                question: 'Research utilizes proven analytical procedures in gathering the data, whether historical, descriptive, and experimental and case study.',
+                answers: ['ANALYTICAL']
+            },
+            {
+                type: 'identification',
+                question: 'Research exibits careful and precise judgment',
+                answers: ['CRITICAL']
+            },
+            {
+                type: 'identification',
+                question: 'Research is conducted in a methodical manner without bias using systematic method and procedures.',
+                answers: ['METHODICAL']
+            },
+            {
+                type: 'identification',
+                question: 'The research design and procedures are replicated or repeated to enable the researcher to arrive at valid and conclusive results.',
+                answers: ['REPLICABILITY']
+            },
         ];
 
         const quizContainer = document.getElementById('quiz');
@@ -138,18 +167,18 @@
             if (questionData.type === 'multiple-choice') {
                 const selectedOption = document.querySelector('input[name="quiz"]:checked');
                 if (selectedOption) {
-                    userAnswers = [selectedOption.value];
+                    userAnswers = [selectedOption.value.toUpperCase()];
                 }
             } else if (questionData.type === 'identification') {
                 const inputElement = document.querySelector('input[name="quiz"]');
                 if (inputElement) {
-                    userAnswers = [inputElement.value.trim()];
+                    userAnswers = [inputElement.value.trim().toUpperCase()];
                 }
             } else if (questionData.type === 'enumeration') {
                 questionData.answers.forEach((_, index) => {
                     const inputElement = document.querySelector(`input[name="quiz-${index}"]`);
                     if (inputElement) {
-                        userAnswers.push(inputElement.value.trim());
+                        userAnswers.push(inputElement.value.trim().toUpperCase());
                     }
                 });
             }
