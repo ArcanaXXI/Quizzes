@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Correlation Regression</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+        height: 100svh;
+        flex-direction: column;
+        background-image: url("https://media.discordapp.net/attachments/1234901026419511410/1242496752574009375/received_466972629060619.jpg?ex=664e0cc6&is=664cbb46&hm=be5442eb19bddfc2959b98b84b7adc3ed1f49b0c9b65d34ccd78980e0f3fe708&=&format=webp&width=765&height=510");
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: white;
+        font-family: Georgia;
+      }
+      h1 {
+        font-size: calc(2.5vw + 2.5vh);
+        font-weight: lighter;
+      }
+      .container {
+        margin-top: 13svh;
+        margin-bottom: 5px;
+        padding-left: calc(5vw + 5vh);
+        padding-right: calc(5vw + 5vh);
+        min-width: ;
+      }
+      .container,
+      input,
+      #r {
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+      #r {
+        width: 75svw;
+        height: 30px;
+        text-align: center;
+      }
+      input {
+        width: 30svw;
+        text-align: center;
+        margin: 4px;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- a table to input the x and y values-->
+    <div class="container">
+      <h1>Correlation Regression Calculator</h1>
+    </div>
+    <table>
+      <tr>
+        <th>X</th>
+        <th>Y</th>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-0" /></td>
+        <td><input type="number" id="yValue-0" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-1" /></td>
+        <td><input type="number" id="yValue-1" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-2" /></td>
+        <td><input type="number" id="yValue-2" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-3" /></td>
+        <td><input type="number" id="yValue-3" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-4" /></td>
+        <td><input type="number" id="yValue-4" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-5" /></td>
+        <td><input type="number" id="yValue-5" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-6" /></td>
+        <td><input type="number" id="yValue-6" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-7" /></td>
+        <td><input type="number" id="yValue-7" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-8" /></td>
+        <td><input type="number" id="yValue-8" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-9" /></td>
+        <td><input type="number" id="yValue-9" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-10" /></td>
+        <td><input type="number" id="yValue-10" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-11" /></td>
+        <td><input type="number" id="yValue-11" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-12" /></td>
+        <td><input type="number" id="yValue-12" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-13" /></td>
+        <td><input type="number" id="yValue-13" /></td>
+      </tr>
+      <tr>
+        <td><input type="number" id="xValue-14" /></td>
+        <td><input type="number" id="yValue-14" /></td>
+      </tr>
+    </table>
+    <button onclick="regression()">Compute</button>
+    <div id="r"></div>
+    <script>
+      function regression() {
+        let xValues = [];
+        let yValues = [];
+
+        for (let i = 0; i < 15; i++) {
+          let x = parseFloat(document.getElementById("xValue-" + i).value);
+          let y = parseFloat(document.getElementById("yValue-" + i).value);
+          if (!isNaN(x) && !isNaN(y)) {
+            xValues.push(x);
+            yValues.push(y);
+          }
+        }
+
+        let xSum = xValues.reduce((a, b) => a + b, 0);
+        let ySum = yValues.reduce((a, b) => a + b, 0);
+        let xySum = xValues.reduce((sum, x, i) => sum + x * yValues[i], 0);
+        let xSquare = xValues.reduce((sum, x) => sum + x ** 2, 0);
+        let ySquare = yValues.reduce((sum, y) => sum + y ** 2, 0);
+        let n = xValues.length;
+
+        let numerator = n * xySum - xSum * ySum;
+        let denominator = Math.sqrt(
+          (n * xSquare - xSum ** 2) * (n * ySquare - ySum ** 2)
+        );
+
+        let r = numerator / denominator;
+
+        document.getElementById("r").innerText = r;
+      }
+    </script>
+  </body>
+</html>
