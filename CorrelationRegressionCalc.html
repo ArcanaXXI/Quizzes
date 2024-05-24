@@ -1,35 +1,37 @@
 <!DOCTYPE html5>
 <html lang="en">
   <head>
-    <link rel="stylesheet" type="text/css" href="CorrelationRegression.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Correlation Regression</title>
     <style>
-          body {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
+      body {
         height: 100vh;
         height: 100svh;
-        flex-direction: column;
-        background-image: url("https://media.discordapp.net/attachments/1234901026419511410/1242496752574009375/received_466972629060619.jpg?ex=664e0cc6&is=664cbb46&hm=be5442eb19bddfc2959b98b84b7adc3ed1f49b0c9b65d34ccd78980e0f3fe708&=&format=webp&width=765&height=510");
+        background-image: url("https://th.bing.com/th/id/R.550c80a326b9d687b038b5f5f72b0724?rik=SNyemVkCGQF09w&riu=http%3a%2f%2fwww.pixelstalk.net%2fwp-content%2fuploads%2f2016%2f05%2fMath-Wallpaper.jpg&ehk=pYtdnSro4Fa6v5YK5qRqbJzhgAoAwqTom3dQyvKPpzM%3d&risl=&pid=ImgRaw&r=0");
+        background-color: rgb(15, 36, 61);
         background-repeat: no-repeat;
         background-size: cover;
         color: white;
         font-family: Georgia;
       }
       h1 {
-        font-size: calc(2.5vw + 2.5vh);
+        font-size: calc(2vw + 2vh);
         font-weight: lighter;
         text-align: center;
       }
       .container {
-        margin-top: 13svh;
-        margin-bottom: 5px;
-        padding-left: calc(5vw + 5vh);
-        padding-right: calc(5vw + 5vh);
-        min-width: ;
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 1px;
+        margin-bottom: 10px;
+      }
+
+      table,
+      #answer {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
       }
       .container,
       input,
@@ -46,6 +48,25 @@
         text-align: center;
         margin: 4px;
         color: white;
+      }
+      button {
+        cursor: pointer;
+        background-color: blue;
+        color: white;
+        border-radius: 5px;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bolder;
+        font-size: calc(1vw + 1vh);
+        font-family: Georgia;
+        transition: opacity 0.15s;
+      }
+      button:hover {
+        opacity: 0.8;
+      }
+      button:active {
+        opacity: 0.5;
       }
     </style>
   </head>
@@ -119,8 +140,10 @@
         <td><input type="number" id="yValue-14" /></td>
       </tr>
     </table>
-    <button onclick="regression()">Compute</button>
-    <div id="r"></div>
+    <div id="answer">
+      <button onclick="regression()">Compute</button>
+      <div id="r"></div>
+    </div>
     <script>
       function regression() {
         let xValues = [];
